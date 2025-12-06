@@ -1,17 +1,20 @@
 {
-  "name": "cs208-full-stack",
-  "version": "0.0.0",
-  "private": true,
+  "name": "downtown-donuts-prototype",
+  "version": "1.0.0",
+  "description": "Prototype site for Downtown Donuts (CS208 assignment)",
+  "main": "app.js",
   "scripts": {
-    "start": "nodemon ./bin/www"
+    "start": "node app.js",
+    "dev": "nodemon app.js"
   },
   "dependencies": {
-    "express": "^5.1.0",
-    "http-errors": "2.0.0",
-    "mysql2": "^3.14.2",
-    "pug": "3.0.3"
+    "ejs": "^3.1.10",
+    "express": "^4.18.2",
+    "express-ejs-layouts": "^2.5.1",
+    "mysql2": "^3.4.0",
+    "body-parser": "^1.20.2"
   },
   "devDependencies": {
-    "nodemon": "^3.1.10"
+    "nodemon": "^2.0.22"
   }
 }
