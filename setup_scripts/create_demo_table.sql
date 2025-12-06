@@ -1,9 +1,9 @@
-CREATE DATABASE IF NOT EXISTS cs208demo;
+-- create_comments_table.sql
+-- Add this to your database setup scripts. Run it against your cs208demo DB.
 
-USE cs208demo;
-
-CREATE TABLE IF NOT EXISTS todos (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    task VARCHAR(255) NOT NULL,
-    completed BOOLEAN DEFAULT FALSE
-);
+CREATE TABLE IF NOT EXISTS comments (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(255) NOT NULL DEFAULT 'Anonymous',
+  message TEXT NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
