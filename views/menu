@@ -1,0 +1,18 @@
+<section class="page-header">
+  <h1>Menu</h1>
+  <p class="subtitle">Sweet donuts, savory specials, and perfectly brewed coffee.</p>
+</section>
+
+<section class="menu-grid">
+  <% menu.forEach(item => { %>
+    <article class="menu-item">
+      <h3><%= item.name %></h3>
+      <p class="muted"><%= item.desc %></p>
+      <div class="price"><%= item.price %></div>
+    </article>
+  <% }) %>
+</section>
+
+<section class="note">
+  <p><em>Digital menu (PDF) available on request. Links to UberEats / DoorDash are provided on the homepage.</em></p>
+</section>
