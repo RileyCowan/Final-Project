@@ -1,0 +1,38 @@
+<section class="page-header">
+  <h1>Customer Comments</h1>
+  <p class="subtitle">We love hearing from you — leave a comment below.</p>
+</section>
+
+<section class="comment-area">
+  <form action="/comments" method="POST" class="comment-form">
+    <label>
+      <span>Your name</span>
+      <input type="text" name="name" placeholder="Name (optional)" maxlength="255" />
+    </label>
+
+    <label>
+      <span>Your message</span>
+      <textarea name="message" rows="4" placeholder="Tell us what you loved..." required></textarea>
+    </label>
+
+    <div>
+      <button class="btn" type="submit">Post Comment</button>
+    </div>
+  </form>
+
+  <div class="comment-list">
+    <% if (comments && comments.length) { %>
+      <% comments.forEach(c => { %>
+        <article class="comment">
+          <div class="comment-meta">
+            <strong><%= c.name %></strong>
+            <time><%= new Date(c.created_at).toLocaleString() %></time>
+          </div>
+          <p><%= c.message %></p>
+        </article>
+      <% }) %>
+    <% } else { %>
+      <p class="muted">No comments yet. Be the first to leave feedback!</p>
+    <% } %>
+  </div>
+</section>
