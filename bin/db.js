@@ -1,49 +1,21 @@
 // db.js
-const mysql = require('mysql2'); // Or your chosen database driver
 
-let connection = null; // This variable is 'closed over'
+const mysql = require("mysql2/promise");
 
-function createDbConnection() {
-    if (!connection) {
-        connection = mysql.createConnection({
-            host: 'localhost',
-            user: 'root',
-            password: '12345',
-            database: 'cs208demo'
-        });
+const pool = mysql.createPool({
+  host: process.env.DB_HOST || "localhost",
+  user: process.env.DB_USER || "root",
+  password: process.env.DB_PASS || "12345",
+  database: process.env.DB_NAME || "cs208demo",
+  waitForConnections: true,
+  connectionLimit: 10,
+  queueLimit: 0
+});
 
-        connection.connect(err => {
-            if (err) {
-                console.error('Error connecting to database:', err);
-                // Handle error appropriately, e.g., exit process
-            } else {
-                console.log('Database connected!');
-            }
-        });
-    }
-    console.log('Using existing database connection');
-    return connection;
-}
-
-// Middleware to attach the connection to the request object
-function dbMiddleware(req, res, next) {
-    req.db = createDbConnection();
-    console.log(`DB middleware id: ${req.db.threadId}, called at: ${Date.now()}`);
-    next();
-}
-
-// Function to close the connection (for graceful shutdown)
-function closeDbConnection() {
-    if (connection) {
-        connection.end(err => {
-            if (err) {
-                console.error('Error closing database connection:', err);
-            } else {
-                console.log('Database connection closed.');
-                connection = null; // Reset connection
-            }
-        });
-    }
-}
-
-module.exports = { dbMiddleware, createDbConnection, closeDbConnection };
+module.exports = {
+  query: async (sql, params) => {
+    const [rows] = await pool.execute(sql, params);
+    return rows;
+  },
+  pool
+};
