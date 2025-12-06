@@ -1,23 +1,30 @@
-extends layout
+<section class="hero">
+  <div class="hero-inner">
+    <h1>Fresh • Warm • Local</h1>
+    <p class="lead">Handmade donuts and small-batch coffee — downtown favorites since 1992.</p>
 
-block content
-  h1= title
-  p Welcome to #{title}
-  ol
-  each val in todos
-    li
-      span= val.task + ' - '
-      if val.completed > 0
-        span Completed
-      else
-        pan Not Completed
-      form(method='POST' action='/delete')
-        input(type='hidden', name='id', value=val.id)
-        button(type='submit') Delete
+    <div class="hero-ctas">
+      <a class="btn" href="/menu">See Our Menu</a>
+      <a class="btn btn-ghost" href="/about">Our Story</a>
+    </div>
 
-  hr
-  h2 Add a new task
-  form(method='POST' action='/create')
-    label(for='task') Task:
-    input(type='text', name='task', id='task', required)
-    button(type='submit') Create Task
+    <p class="order-links">Order online: <a href="https://www.ubereats.com" target="_blank" rel="noopener noreferrer">UberEats</a> • <a href="https://www.doordash.com" target="_blank" rel="noopener noreferrer">DoorDash</a></p>
+  </div>
+</section>
+
+<section class="features">
+  <div class="feature">
+    <h3>Cozy & Modern</h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vitae eros eget tellus tristique bibendum.</p>
+  </div>
+
+  <div class="feature">
+    <h3>Daily Fresh</h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vitae eros eget tellus tristique bibendum.</p>
+  </div>
+
+  <div class="feature">
+    <h3>Community-Focused</h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vitae eros eget tellus tristique bibendum.</p>
+  </div>
+</section>
