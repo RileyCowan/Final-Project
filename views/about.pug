@@ -1,0 +1,18 @@
+<section class="page-header">
+  <h1>About Downtown Donuts</h1>
+  <p class="subtitle">A family-owned shop rooted in community.</p>
+</section>
+
+<article class="about-content">
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque efficitur, augue id tincidunt volutpat, nibh sem posuere dolor, non hendrerit arcu nibh non mauris. Curabitur sit amet elit a arcu cursus tincidunt.</p>
+
+  <h3>Our timeline</h3>
+  <ul class="timeline">
+    <% timeline.forEach(event => { %>
+      <li><strong><%= event.year %></strong> — <%= event.event %></li>
+    <% }) %>
+  </ul>
+
+  <h3>Visit us</h3>
+  <p>Downtown Donuts, 123 Main St, Downtown</p>
+</article>
