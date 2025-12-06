@@ -1,4 +1,3 @@
--- create_comments_table.sql
 -- Add this to your database setup scripts. Run it against your cs208demo DB.
 
 CREATE TABLE IF NOT EXISTS comments (
